@@ -81,6 +81,7 @@ public class MyListsTests extends CoreTestCase {
 
     /* Ex. 5 Сохраняет 2 статьи в Мой список, затем удаляет одну из них и убеждается что 2я статья присутствует */
     /* Ex. 11 */
+    /* Ex.17 */
     @Test
     public void testSaveTwoArticlesToMyList() {
         String search_text = "Java";

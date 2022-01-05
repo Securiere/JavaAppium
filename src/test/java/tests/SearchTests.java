@@ -1,6 +1,7 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.Platform;
 import lib.UI.SearchPageObject;
 import lib.UI.factories.SearchPageObjectFactory;
 import org.junit.Test;
@@ -89,7 +90,7 @@ public class SearchTests extends CoreTestCase
         SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
         SearchPageObject.assertTitleIsPresent();
     }
-    /* Ex.9 */
+    /* Ex.9
     @Test
     public void testSearchForTitleAndDescription() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
@@ -104,6 +105,25 @@ public class SearchTests extends CoreTestCase
 
         for (Map.Entry<String, String> kv : TitleAndNDescription.entrySet()) {
             SearchPageObject.waitForElementByTitleAndDescription(kv.getKey(), kv.getValue());
+        }
+    }*/
+
+    public void testSearchByTitleAndDescription()
+    {
+        String[] Titles = new String[]{"Java", "JavaScript", "Java (programming language)"};
+        String[] Descriptions = new String[]{"Island of Indonesia", "Programming language", "Object-oriented programming language"};
+
+        if (Platform.getInstance().isMW()) {
+            Descriptions[0] = "Indonesian island";
+            Descriptions[1] = "High-level programming language";
+        }
+
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
+
+        SearchPageObject.initSearchInput();
+        SearchPageObject.typeSearchLine("Java");
+        for (int i = 0; i < 3; i++) {
+            SearchPageObject.waitForElementByTitleAndDescription(Titles[i], Descriptions[i]);
         }
     }
 
