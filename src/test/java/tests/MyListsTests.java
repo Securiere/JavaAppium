@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.UI.*;
@@ -13,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /* Тесты, связанные с Моим списком */
+@Epic("Tests for My List")
 public class MyListsTests extends CoreTestCase {
     private static final String name_of_folder = "Learning programming";
     private static final String
@@ -21,6 +24,11 @@ public class MyListsTests extends CoreTestCase {
 
     /* Сохраняет статью в Мой список и затем удаляет ее оттуда */
     @Test
+    @Features(value = {@Feature(value = "Search"), @Feature(value = "Article"), @Feature(value = "My List")})
+    @DisplayName("Save first article to My List, check and remove it")
+    @Description("Open the article, add it to My List, check the List and remove the article from it")
+    @Step("Start test 'testSaveFirstArticleToMyList'")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void testSaveFirstArticleToMyList() {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
@@ -83,6 +91,11 @@ public class MyListsTests extends CoreTestCase {
     /* Ex. 11 */
     /* Ex.17 */
     @Test
+    @Features(value = {@Feature(value = "Search"), @Feature(value = "Article"), @Feature(value = "My List")})
+    @DisplayName("Add two articles to My List, check and remove one of them")
+    @Description("Open and add two articles to My List, check the List and remove one of the articles from it")
+    @Step("Start test 'testArticleList'")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void testSaveTwoArticlesToMyList() {
         String search_text = "Java";
         String search_result_description_1 = "Object-oriented programming language";
@@ -98,7 +111,7 @@ public class MyListsTests extends CoreTestCase {
         if (Platform.getInstance().isMW()) {
             search_result_description_2 = "Indonesian island";
         }
-        String folder_name = "Must read!";
+        String folder_name = "My List";
 
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
@@ -147,7 +160,7 @@ public class MyListsTests extends CoreTestCase {
             MyListsPageObject.openFolderByName(folder_name);
         }
 
-        // Удаление второй статьи из списка и проверка её исчезновения
+        // Удаление второй статьи из списка и проверка её удаления
         if (Platform.getInstance().isMW()) {
             MyListsPageObject.removeArticleToDeleteByLink(mw_link_2);
             MyListsPageObject.waitForArticleToDisappearByLink(mw_link_2);
@@ -160,9 +173,9 @@ public class MyListsTests extends CoreTestCase {
         if ((Platform.getInstance().isAndroid()) || (Platform.getInstance().isIOS())) {
             String current_article_full_title = SearchPageObject.findElementNameBySubstringAndClick(list_item_1);
 
-            // Проверка, не изменилось ли название/описание статьи после всех произведённых действий
+            // Проверка, не изменилось ли название/описание статьи после всех действий
             Assert.assertEquals(
-                    "Error! Unexpected article title: '" + current_article_full_title + "' instead of '" + initial_article_full_title + "'.",
+                    "Unexpected article title: '" + current_article_full_title + "' instead of '" + initial_article_full_title + "'.",
                     current_article_full_title,
                     initial_article_full_title);
         } else {
@@ -170,7 +183,7 @@ public class MyListsTests extends CoreTestCase {
         }
 
         // Вывод сообщения об успешном проведении теста
-        System.out.println("OK! Everything went fine!");
+        System.out.println("Everything is OK");
     }
 }
         /*SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);

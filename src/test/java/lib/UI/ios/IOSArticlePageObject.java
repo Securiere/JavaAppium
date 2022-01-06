@@ -11,7 +11,7 @@ public class IOSArticlePageObject extends ArticlePageObject
         FOOTER_ELEMENT = "id:View article in browser";
         OPTIONS_ADD_TO_MY_LIST_BUTTON = "id:Save for later";
         CLOSE_ARTICLE_BUTTON = "id:Back";
-        //MY_LIST_NAME = "id:org.wikipedia:id/item_title";
+        MY_LIST_NAME = "id:org.wikipedia:id/item_title";
         }
 
     public IOSArticlePageObject(RemoteWebDriver driver)

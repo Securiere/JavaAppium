@@ -1,6 +1,7 @@
 package lib.UI;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import lib.Platform;
 import lib.UI.MainPageObject;
 import org.openqa.selenium.By;
@@ -52,7 +53,7 @@ abstract public class MyListsPageObject extends MainPageObject {
         return FOLDER_BY_ID_TPL.replace("org.wikipedia:id/item_title", id);
     }*/
 
-
+    @Step("Open My List folder by name '{folder_name}'")
         public void openFolderByName(String name_of_folder)
         {
             String folder_name_xpath = getFolderXpathByName(name_of_folder);
@@ -73,12 +74,14 @@ abstract public class MyListsPageObject extends MainPageObject {
         );
     }*/
 
+    @Step("Wait for article to appear by title '{article_title}'")
     public void waitForArticleToAppearByTitle(String article_title)
     {
         String article_xpath = getSavedArticleXpathByTitle(article_title);
         this.waitForElementPresent(article_xpath, "Cannot find saved article by title " + article_title, 15);
     }
 
+    @Step("Wait for article to appear by link '{link_text}'")
     public void waitForArticleToAppearByLink(String link_text)
     {
         String saved_article_xpath = getSavedMWArticleXpathByLink(link_text);
@@ -89,11 +92,14 @@ abstract public class MyListsPageObject extends MainPageObject {
         );
     }
 
+    @Step("Wait for article to disappear by title '{article_title}'")
         public void waitForArticleToDisappearByTitle(String article_title)
         {
             String article_xpath = getSavedArticleXpathByTitle(article_title);
             this.waitForElementNotPresent(article_xpath, "Saved article still present with title " + article_title, 15);
         }
+
+    @Step("Wait for article to disappear by link '{link_text}'")
     public void waitForArticleToDisappearByLink(String link_text)
     {
         String saved_article_xpath = getSavedMWArticleXpathByLink(link_text);
@@ -104,6 +110,7 @@ abstract public class MyListsPageObject extends MainPageObject {
         );
     }
 
+    @Step("Swipe '{article_title}' to remove it from My List")
         public void swipeByArticleToDelete(String article_title)
         {
             this.waitForArticleToAppearByTitle(article_title);
@@ -141,6 +148,7 @@ abstract public class MyListsPageObject extends MainPageObject {
         }
 
     //Подсчет количества статей в Избранном
+    @Step("Get amount of found articles in My List")
     public int getAmountOfFoundArticlesInMyList()
     {
         this.waitForElementPresent(
@@ -151,6 +159,7 @@ abstract public class MyListsPageObject extends MainPageObject {
         return this.getAmountOfElements(SEARCH_RESULT_ELEMENTS_IN_MY_LIST);
     }
 
+    @Step("Remove the article from My list by the link '{link_text}'")
     public void removeArticleToDeleteByLink(String link_text)
     {
         String remove_locator = getRemoveButtonByLink(link_text);

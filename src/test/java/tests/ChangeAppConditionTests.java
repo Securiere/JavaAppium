@@ -1,18 +1,27 @@
 package tests;
 
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.UI.ArticlePageObject;
 import lib.UI.SearchPageObject;
 import lib.UI.factories.ArticlePageObjectFactory;
 import lib.UI.factories.SearchPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 /* Тесты связанные с изменением приложения */
+@Epic("Tests for changing app conditions")
 public class ChangeAppConditionTests extends CoreTestCase
 {
     /* Меняет ориентацию экрана и возвращает обратно */
     @Test
+    @Feature(value = "Screen Orientation")
+    @DisplayName("Test changes screen orientation on search results")
+    @Description("Search for article and check that article title is the same after screen orientation changes")
+    @Step("Start test 'testChangeScreenOrientationOnSearchResults'")
+    @Severity(value = SeverityLevel.NORMAL)
     public void testChangeScreenOrientationOnSearchResults() {
         if (Platform.getInstance().isMW()) {
             return;
@@ -28,7 +37,7 @@ public class ChangeAppConditionTests extends CoreTestCase
         this.rotateScreenLandscape();
         String title_after_rotation = ArticlePageObject.getArticleTitle();
 
-        assertEquals(
+        Assert.assertEquals(
                 "Article title have been changed after rotation",
                 title_before_rotation,
                 title_after_rotation
@@ -37,7 +46,7 @@ public class ChangeAppConditionTests extends CoreTestCase
         this.rotateScreenPortrait();
         String title_after_second_rotation = ArticlePageObject.getArticleTitle();
 
-        assertEquals(
+        Assert.assertEquals(
                 "Article title have been changed after rotation",
                 title_before_rotation,
                 title_after_second_rotation
@@ -46,6 +55,11 @@ public class ChangeAppConditionTests extends CoreTestCase
 
     /* Сворачивает и разворачивает приложение */
     @Test
+    @Feature(value = "Background")
+    @DisplayName("Test switching app to background search results")
+    @Description("Search for article and check that app doesn't crash after running app from background")
+    @Step("Start test 'testCheckSearchArticleInBackground'")
+    @Severity(value = SeverityLevel.NORMAL)
     public void testCheckSearchArticleInBackground() {
         if (Platform.getInstance().isMW()) {
             return;
