@@ -1,6 +1,5 @@
 package lib.UI.factories;
 
-import io.appium.java_client.AppiumDriver;
 import lib.Platform;
 import lib.UI.ArticlePageObject;
 import lib.UI.android.AndroidArticlePageObject;

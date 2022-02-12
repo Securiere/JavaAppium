@@ -10,7 +10,6 @@ import lib.UI.factories.ArticlePageObjectFactory;
 import lib.UI.factories.MyListsPageObjectFactory;
 import lib.UI.factories.NavigationUIFactory;
 import lib.UI.factories.SearchPageObjectFactory;
-import lib.UI.factories.*;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,6 +1,5 @@
 package lib.UI;
 
-import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import lib.Platform;
 import org.openqa.selenium.WebElement;
@@ -20,12 +19,20 @@ abstract public class ArticlePageObject extends MainPageObject
             CLOSE_ARTICLE_BUTTON,
             OPTIONS_REMOVE_FROM_MY_LIST_BUTTON,
             CLOSE_SYNC_DIALOG_BUTTON,
+            EXISTING_LIST_BY_SUBSTRING_TPL,
             MY_LIST_NAME;
 
     public ArticlePageObject(RemoteWebDriver driver)
     {
         super(driver);
     }
+
+    /* Templates */
+    private static String getExistingListXpath(String substring)
+    {
+        return EXISTING_LIST_BY_SUBSTRING_TPL.replace("{FOLDER_NAME}", substring);
+    }
+    /* Templates */
 
     @Step("Wait for title element to appear")
     public WebElement waitForTitleElement()
@@ -56,19 +63,19 @@ abstract public class ArticlePageObject extends MainPageObject
         if (Platform.getInstance().isAndroid()) {
             this.swipeUpToFindElement(
                     FOOTER_ELEMENT,
-                    "Error! End of article is not found.",
+                    "End of article is not found.",
                     20
             );
         } else if (Platform.getInstance().isIOS()) {
             this.swipeUpTillElementAppear(
                     FOOTER_ELEMENT,
-                    "Error! End of article is not found.",
+                    "End of article is not found.",
                     40
             );
         } else {
             this.scrollWebPageTillElementNotVisible(
                     FOOTER_ELEMENT,
-                    "Error! End of article is not found.",
+                    "End of article is not found.",
                     40
             );
         }
@@ -126,9 +133,11 @@ abstract public class ArticlePageObject extends MainPageObject
                 5
         );
 
+        String MY_LIST_NAME = getExistingListXpath(name_of_folder);
+
         this.waitForElementAndClick(
                 MY_LIST_NAME,
-                "Cannot find our list during adding",
+                "'" + name_of_folder + "' folder wasn't find",
                 5
         );
     }
@@ -148,12 +157,12 @@ abstract public class ArticlePageObject extends MainPageObject
         if (this.isElementPresent(OPTIONS_REMOVE_FROM_MY_LIST_BUTTON)) {
             this.waitForElementAndClick(
                     OPTIONS_REMOVE_FROM_MY_LIST_BUTTON,
-                    "Error! 'Remove' button is not found.",
+                    "'Remove' button is not found.",
                     5
             );
             this.waitForElementPresent(
                     OPTIONS_ADD_TO_MY_LIST_BUTTON,
-                    "Error! 'Add' button is not found.",
+                    "'Add' button is not found.",
                     5
             );
         }

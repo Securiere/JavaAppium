@@ -9,9 +9,6 @@ import lib.UI.factories.SearchPageObjectFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /* Тесты связанные с поиском */
 @Epic("Tests for Searching")
 public class SearchTests extends CoreTestCase

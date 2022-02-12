@@ -153,7 +153,7 @@ public class MainPageObject {
     {
         int element_location_by_y = this.waitForElementPresent(
                         locator,
-                        "Error! Cannot find element.",
+                        "Cannot find element.",
                         1)
                 .getLocation()
                 .getY();
@@ -168,9 +168,9 @@ public class MainPageObject {
         return element_location_by_y < screen_size_by_y;
     }
 
-    public void findTheElementsPresent(By by, String error_message) {
+    /*public void findTheElementsPresent(By by, String error_message) {
         driver.findElements(by);
-    }
+    }*/
 
     public void clickElementToTheRightUpperCorner(String locator, String error_message)
     {
@@ -294,11 +294,11 @@ public class MainPageObject {
             throw new IllegalArgumentException("Error! Unable to identify the '" + locator_with_type + "' locator type.");
         }
     }
-    public List<WebElement> waitForElementsPresent(String locator, String error_messanger, long timeoutInSecond)
+    public List<WebElement> waitForElementsPresent(String locator, String error_message, long timeoutInSecond)
     {
         By by = this.getLocatorByString(locator);
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSecond);
-        wait.withMessage(error_messanger + "\n");
+        wait.withMessage(error_message + "\n");
         return wait.until(
                 ExpectedConditions.presenceOfAllElementsLocatedBy(by)
         );

@@ -1,6 +1,5 @@
 package lib.UI;
 
-import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import lib.Platform;
 import org.openqa.selenium.WebElement;
@@ -43,7 +42,15 @@ abstract public class SearchPageObject extends MainPageObject {
                 .replace("{SUBSTRING_TITLE}",substringTitle)
                 .replace("{SUBSTRING_DESC}",substringDesc);
     }
+    /*
+        private static String getSearchResultByTitleAndDescription(String title, String description)
+    {
+        String add_title = SEARCH_RESULT_BY_TITLE_AND_DESCRIPTION_TPL.replace("{TITLE}", title);
+        return add_title.replace("{DESCRIPTION}", description);
+    }
+     */
 /* TEMPLATES METHODS*/
+
     @Step("Initialize 'Search' field")
     public void initSearchInput()
     {
@@ -96,7 +103,7 @@ abstract public class SearchPageObject extends MainPageObject {
         String search_result_xpath = getResultSearchElement(substring);
         WebElement element = this.waitForElementPresent(
                 search_result_xpath,
-                "Error! '" + substring + "' string is not found in search results.",
+                "'" + substring + "' string is not found in search results.",
                 10
         );
         String attribute = "name";

@@ -2,7 +2,6 @@ package lib;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
-import junit.framework.TestCase;
 import lib.UI.WelcomePageObject;
 import org.junit.After;
 import org.junit.Before;
@@ -15,9 +14,6 @@ import java.util.Properties;
 
 /* */
 public class CoreTestCase{
-
-    private static final String PLATFORM_IOS = "ios";
-    private static final String PLATFORM_ANDROID = "android";
 
     protected RemoteWebDriver driver;
 

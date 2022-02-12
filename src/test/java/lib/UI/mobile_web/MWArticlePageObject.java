@@ -8,7 +8,7 @@ public class MWArticlePageObject extends ArticlePageObject {
         TITLE = "css:#content h1";
         FOOTER_ELEMENT = "css:footer";
         OPTIONS_BUTTON = "xpath://android.widget.ImageView[@content-desc='More options']";
-        OPTIONS_ADD_TO_MY_LIST_BUTTON = "css:#page-actions li#ca-watch.mw-ui-icon-mf-watch button";
+        OPTIONS_ADD_TO_MY_LIST_BUTTON = "css:#page-actions li#page-actions-watch";
         OPTIONS_REMOVE_FROM_MY_LIST_BUTTON = "css:#page-actions li#ca-watch.mw-ui-icon-mf-watched watched button";
         ADD_TO_MY_LIST_OVERLAY = "id:org.wikipedia:id/onboarding_button";
         MY_LIST_NAME_INPUT = "id:org.wikipedia:id/text_input";

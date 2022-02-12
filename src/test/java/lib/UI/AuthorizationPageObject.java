@@ -20,23 +20,23 @@ public class AuthorizationPageObject extends MainPageObject {
     {
         this.tryClickElementWithFewAttempts(
                 LOGIN_BUTTON,
-                "Error! 'Login' button is not found.",
+                "'Login' button is not found.",
                 5);
     }
 
-    @Step("Enter login credentials")
+    @Step("Enter login and password")
     public void enterLoginData(String login, String password)
     {
         this.waitForElementAndSendKeys(
                 LOGIN_INPUT,
                 login,
-                "Error! 'Login' input is not found.",
+                "'Login' input is not found.",
                 5
         );
         this.waitForElementAndSendKeys(
                 PASSWORD_INPUT,
                 password,
-                "Error! 'Password' input is not found.",
+                "'Password' input is not found.",
                 5
         );
     }
@@ -46,7 +46,7 @@ public class AuthorizationPageObject extends MainPageObject {
     {
         this.waitForElementAndClick(
                 SUBMIT_BUTTON,
-                "Error! 'Submit' button is not found.",
+                "'Submit' button is not found.",
                 5
         );
     }

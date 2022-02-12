@@ -1,6 +1,5 @@
 package lib.UI.android;
 
-import io.appium.java_client.AppiumDriver;
 import lib.UI.SearchPageObject;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -15,6 +14,9 @@ public class AndroidSearchPageObject extends SearchPageObject
         SEARCH_RESULT_ELEMENT = "xpath://*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']";
         SEARCH_EMPTY_RESULT_ELEMENT = "xpath://*[@text= 'No results found']";
         SEARCH_TITLE_ELEMENT = "xpath://*[@resource-id='org.wikipedia:id/view_page_header_container']/*[@resource-id='org.wikipedia:id/view_page_title_text']";
+        SEARCH_RESULTS_LIST = "id:org.wikipedia:id/page_list_item_container";
+        SECOND_RESULT_XPATH = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@index=1]";
+        SEARCH_INPUT_TEXT = "id:org.wikipedia:id/search_src_text";
     }
     public AndroidSearchPageObject(RemoteWebDriver driver)
     {

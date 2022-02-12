@@ -1,6 +1,5 @@
 package lib.UI.android;
 
-import io.appium.java_client.AppiumDriver;
 import lib.UI.ArticlePageObject;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -14,7 +13,8 @@ public class AndroidArticlePageObject extends ArticlePageObject {
         MY_LIST_NAME_INPUT = "id:org.wikipedia:id/text_input";
         MY_LIST_OK_BUTTON = "xpath://*[@text='OK']";
         CLOSE_ARTICLE_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']";
-        MY_LIST_NAME = "id:org.wikipedia:id/item_title";    }
+        EXISTING_LIST_BY_SUBSTRING_TPL = "xpath://android.widget.TextView[@text='{FOLDER_NAME}']";
+    }
 
     public AndroidArticlePageObject(RemoteWebDriver driver)
     {

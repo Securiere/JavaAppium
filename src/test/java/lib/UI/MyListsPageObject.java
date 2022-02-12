@@ -1,10 +1,7 @@
 package lib.UI;
 
-import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import lib.Platform;
-import lib.UI.MainPageObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 /* Тут собраны все методы */
@@ -23,7 +20,7 @@ abstract public class MyListsPageObject extends MainPageObject {
     {
         super(driver);
     }
-
+/*Templates*/
     private static String getFolderXpathByName(String name_of_folder)
     {
         return FOLDER_BY_NAME_TPL.replace("{FOLDER_NAME}", name_of_folder);
@@ -47,6 +44,7 @@ abstract public class MyListsPageObject extends MainPageObject {
     {
         return REMOVE_FROM_SAVED_BUTTON_TPL.replace("{TITLE}", article_title);
     }
+    /*Templates*/
 
 /*    private static String getFolderById(String id)
     {
@@ -115,10 +113,7 @@ abstract public class MyListsPageObject extends MainPageObject {
         {
             this.waitForArticleToAppearByTitle(article_title);
             String article_xpath = getSavedArticleXpathByTitle(article_title);
-            this.swipeElementToLeft(
-                    article_xpath,
-                    "Cannot find saved article"
-            );
+
             if (Platform.getInstance().isAndroid() || Platform.getInstance().isIOS()) {
                 this.swipeElementToLeft(
                         article_xpath,
@@ -165,7 +160,7 @@ abstract public class MyListsPageObject extends MainPageObject {
         String remove_locator = getRemoveButtonByLink(link_text);
         this.waitForElementAndClick(
                 remove_locator,
-                "Error! 'Remove' button is not found.",
+                "'Remove' button is not found.",
                 5
         );
 

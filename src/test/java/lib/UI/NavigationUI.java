@@ -1,9 +1,7 @@
 package lib.UI;
 
-import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import lib.Platform;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 /* Навигация */
@@ -24,7 +22,7 @@ abstract public class NavigationUI extends MainPageObject{
         if (Platform.getInstance().isMW()) {
             this.waitForElementAndClick(
                     OPEN_NAVIGATION,
-                    "Error! No 'Navigation' button is found.",
+                    "No 'Navigation' button is found.",
                     5
             );
         } else {
